@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gainsboro;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .weather-container {
+            width: 430px;
+            height: 932px;
+            background-color: #c6f0fd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .weather-circle {
+            width: 350px;
+            height: 350px;
+            margin-top: 90px;
+            background-color: #6DBEFF;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .weather-circle h1, .weather-circle h2, .weather-circle p {
+            margin: 5px 0;
+            
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px;
+        }
+        .tab {
+            background-color: lightgray;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .tab.active {
+            background-color: black;
+            color: white;
+        }
+        .chart {
+            margin-top: 20px;
+        }
+        .chart img {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function changeChart(type) {
+            document.getElementById("chart-img").src = type + "_chart.png";
+            let tabs = document.querySelectorAll(".tab");
+            tabs.forEach(tab => tab.classList.remove("active"));
+            document.getElementById(type).classList.add("active");
+        }
+    </script>
+</head>
+<body>
+    <div class="weather-container">
+        <div class="weather-circle">
+            <h2>Philadelphia</h2>
+            <h1>Sunny ☀️</h1>
+            <h1>27°F</h1>
+            <p>Wind speed: 40</p>
+        </div>
+        <div class="tabs">
+            <div class="tab active" id="hourly" onclick="changeChart('hourly')">Hourly</div>
+            <div class="tab" id="weekly" onclick="changeChart('weekly')">Weekly</div>
+            <div class="tab" id="past" onclick="changeChart('past')">Past</div>
+        </div>
+        <div class="chart">
+            <img id="chart-img" src="hourly_chart.png" alt="Weather Chart">
+        </div>
+    </div>
+</body>
+</html>
